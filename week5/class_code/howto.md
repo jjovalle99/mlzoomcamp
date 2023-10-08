@@ -22,3 +22,21 @@ poetry run gunicorn --bind 0.0.0.0:5000 05-test-model:app
 
 # The other steps are the same
 ```
+
+#### Docker
+```docker
+# prepare files before
+cp ~/mlzoomcamp/poetry.lock ~/mlzoomcamp/week5/class_code/poetry.lock 
+cp ~/mlzoomcamp/pyproject.toml ~/mlzoomcamp/week5/class_code/pyproject.toml
+
+# build docker image
+docker build -t churn-app ~/mlzoomcamp/week5/class_code/
+
+# run app
+docker run --rm -p 5000:5000 churn-app
+
+# now I can use curl on localhost to make calls to api
+
+# clean up folder
+rm ~/mlzoomcamp/week5/class_code/pyproject.toml ~/mlzoomcamp/week5/class_code/poetry.lock 
+```
